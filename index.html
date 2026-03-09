@@ -1,68 +1,95 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestion des retards etudiants</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style>
+    .view { display: none; }
+    .view.is-visible { display: block; }
+    .tab.is-active { font-weight: 700; }
+    .sticky-top-tabs { top: 0; z-index: 1030; }
+    .table-wrap { overflow-x: auto; }
+    .toast-container { position: fixed; right: 1rem; bottom: 1rem; z-index: 1080; }
+    .modal { display: none; background: rgba(0, 0, 0, 0.45); }
+    .modal.is-visible { display: block; }
+    .bars .bar-row { margin-bottom: 0.75rem; }
+    .bars .bar-label { display: flex; justify-content: space-between; margin-bottom: 0.25rem; font-size: 0.9rem; }
+  </style>
 </head>
-<body>
-  <div class="bg-decor" aria-hidden="true"></div>
-  <header class="app-header">
-    <div>
-      <p class="eyebrow">Fondation Mohammed 5 - Casablanca</p>
-      <h1>Gestion des retards etudiants</h1>
-      <p class="device-note">Donnees enregistrees sur cet appareil (mode offline).</p>
-    </div>
-    <div class="header-actions">
-      <button id="resetDataBtn" class="btn danger" type="button">Reinitialiser toutes les donnees</button>
+<body class="bg-light">
+  <header class="bg-dark text-white py-4 border-bottom border-secondary-subtle">
+    <div class="container d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
+      <div>
+        <p class="text-uppercase small mb-1">Fondation Mohammed 5 - Casablanca</p>
+        <h1 class="h3 mb-1">Gestion des retards etudiants</h1>
+        <p class="mb-0 text-white-50">Donnees enregistrees sur cet appareil (mode offline).</p>
+      </div>
+      <div>
+        <button id="resetDataBtn" class="btn btn-outline-warning" type="button">Reinitialiser toutes les donnees</button>
+      </div>
     </div>
   </header>
 
-  <nav class="tabs" aria-label="Navigation principale">
-    <button class="tab is-active" data-section="dashboard" type="button">Tableau de bord</button>
-    <button class="tab" data-section="students" type="button">Etudiants</button>
-    <button class="tab" data-section="lates" type="button">Retards</button>
-    <button class="tab" data-section="stats" type="button">Statistiques</button>
+  <nav class="bg-white border-bottom sticky-top sticky-top-tabs" aria-label="Navigation principale">
+    <div class="container py-2">
+      <div class="nav nav-pills flex-wrap gap-2">
+        <button class="tab nav-link active is-active" data-section="dashboard" type="button">Tableau de bord</button>
+        <button class="tab nav-link" data-section="students" type="button">Etudiants</button>
+        <button class="tab nav-link" data-section="lates" type="button">Retards</button>
+        <button class="tab nav-link" data-section="stats" type="button">Statistiques</button>
+      </div>
+    </div>
   </nav>
 
-  <main>
+  <main class="container py-4">
     <section id="dashboard" class="view is-visible" aria-label="Tableau de bord">
-      <div class="kpi-grid">
-        <article class="kpi-card">
-          <h2>Retards aujourd'hui</h2>
-          <p id="kpiTodayCount" class="kpi-value">0</p>
+      <div class="row g-3 mb-4">
+        <article class="col-12 col-md-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-body">
+              <h2 class="h6 text-secondary mb-2">Retards aujourd'hui</h2>
+              <p id="kpiTodayCount" class="display-6 fw-bold mb-0">0</p>
+            </div>
+          </div>
         </article>
-        <article class="kpi-card">
-          <h2>Retards ce mois</h2>
-          <p id="kpiMonthCount" class="kpi-value">0</p>
+        <article class="col-12 col-md-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-body">
+              <h2 class="h6 text-secondary mb-2">Retards ce mois</h2>
+              <p id="kpiMonthCount" class="display-6 fw-bold mb-0">0</p>
+            </div>
+          </div>
         </article>
-        <article class="kpi-card">
-          <h2>Minutes cumulees ce mois</h2>
-          <p id="kpiMonthMinutes" class="kpi-value">0</p>
+        <article class="col-12 col-md-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-body">
+              <h2 class="h6 text-secondary mb-2">Minutes cumulees ce mois</h2>
+              <p id="kpiMonthMinutes" class="display-6 fw-bold mb-0">0</p>
+            </div>
+          </div>
         </article>
       </div>
 
-      <div class="card dashboard-actions">
-        <button id="gotoAddLateBtn" class="btn primary" type="button">Ajouter retard</button>
-        <button id="gotoAddStudentBtn" class="btn" type="button">Ajouter etudiant</button>
-        <button id="dashboardExportBtn" class="btn" type="button">Exporter CSV</button>
+      <div class="card shadow-sm mb-4">
+        <div class="card-body d-flex flex-wrap gap-2">
+          <button id="gotoAddLateBtn" class="btn btn-primary" type="button">Ajouter retard</button>
+          <button id="gotoAddStudentBtn" class="btn btn-outline-primary" type="button">Ajouter etudiant</button>
+          <button id="dashboardExportBtn" class="btn btn-outline-secondary" type="button">Exporter CSV</button>
+        </div>
       </div>
     </section>
 
     <section id="students" class="view" aria-label="Gestion des etudiants">
-      <div class="card">
-        <div class="card-head">
-          <h2>Etudiants</h2>
-          <input id="studentSearch" type="search" placeholder="Rechercher nom, prenom, groupe..." aria-label="Rechercher un etudiant">
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-white d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2">
+          <h2 class="h5 mb-0">Etudiants</h2>
+          <input id="studentSearch" class="form-control" type="search" placeholder="Rechercher nom, prenom, groupe..." aria-label="Rechercher un etudiant">
         </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
+        <div class="card-body table-wrap">
+          <table class="table table-striped table-hover align-middle mb-0">
+            <thead class="table-light">
               <tr>
                 <th>Nom</th>
                 <th>Prenom</th>
@@ -77,170 +104,207 @@
         </div>
       </div>
 
-      <div class="card">
-        <h3 id="studentFormTitle">Ajouter un etudiant</h3>
-        <form id="studentForm" novalidate>
-          <input type="hidden" id="studentId">
-          <div class="form-grid">
-            <label>Nom
-              <input id="studentLastName" type="text" required maxlength="60">
-            </label>
-            <label>Prenom
-              <input id="studentFirstName" type="text" required maxlength="60">
-            </label>
-            <label>Classe / Groupe
-              <input id="studentGroup" type="text" required maxlength="60">
-            </label>
-            <label>Telephone (optionnel)
-              <input id="studentPhone" type="tel" maxlength="30">
-            </label>
-            <label>Email (optionnel)
-              <input id="studentEmail" type="email" maxlength="120">
-            </label>
-            <label>Statut
-              <select id="studentActive">
-                <option value="true">Actif</option>
-                <option value="false">Inactif</option>
-              </select>
-            </label>
-          </div>
-          <p id="studentFormError" class="form-error" role="alert"></p>
-          <div class="form-actions">
-            <button class="btn primary" type="submit">Enregistrer etudiant</button>
-            <button id="cancelStudentEditBtn" class="btn ghost" type="button">Annuler</button>
-            <button id="exportStudentsBtn" class="btn" type="button">Exporter CSV etudiants</button>
-          </div>
-        </form>
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h3 id="studentFormTitle" class="h5 mb-3">Ajouter un etudiant</h3>
+          <form id="studentForm" novalidate>
+            <input type="hidden" id="studentId">
+            <div class="row g-3">
+              <div class="col-12 col-md-6">
+                <label class="form-label" for="studentLastName">Nom</label>
+                <input id="studentLastName" class="form-control" type="text" required maxlength="60">
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label" for="studentFirstName">Prenom</label>
+                <input id="studentFirstName" class="form-control" type="text" required maxlength="60">
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label" for="studentGroup">Classe / Groupe</label>
+                <input id="studentGroup" class="form-control" type="text" required maxlength="60">
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label" for="studentPhone">Telephone (optionnel)</label>
+                <input id="studentPhone" class="form-control" type="tel" maxlength="30">
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label" for="studentEmail">Email (optionnel)</label>
+                <input id="studentEmail" class="form-control" type="email" maxlength="120">
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label" for="studentActive">Statut</label>
+                <select id="studentActive" class="form-select">
+                  <option value="true">Actif</option>
+                  <option value="false">Inactif</option>
+                </select>
+              </div>
+            </div>
+            <p id="studentFormError" class="text-danger mt-2 mb-0" role="alert"></p>
+            <div class="d-flex flex-wrap gap-2 mt-3">
+              <button class="btn btn-primary" type="submit">Enregistrer etudiant</button>
+              <button id="cancelStudentEditBtn" class="btn btn-outline-secondary" type="button">Annuler</button>
+              <button id="exportStudentsBtn" class="btn btn-outline-success" type="button">Exporter CSV etudiants</button>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
 
     <section id="lates" class="view" aria-label="Gestion des retards">
-      <div class="card">
-        <h2>Ajouter / modifier un retard</h2>
-        <form id="lateForm" novalidate>
-          <input type="hidden" id="lateId">
-          <div class="form-grid">
-            <label>Etudiant
-              <select id="lateStudent" required></select>
-            </label>
-            <label>Date
-              <input id="lateDate" type="date" required>
-            </label>
-            <label>Heure (optionnel)
-              <input id="lateTime" type="time">
-            </label>
-            <label>Minutes de retard
-              <input id="lateMinutes" type="number" min="1" required>
-            </label>
-            <label>Motif
-              <input id="lateReason" type="text" maxlength="180">
-            </label>
-            <label>Justificatif
-              <select id="lateJustified">
-                <option value="false">Non</option>
-                <option value="true">Oui</option>
-              </select>
-            </label>
-          </div>
-          <p id="lateFormError" class="form-error" role="alert"></p>
-          <div class="form-actions">
-            <button class="btn primary" type="submit">Enregistrer retard</button>
-            <button id="cancelLateEditBtn" class="btn ghost" type="button">Annuler</button>
-          </div>
-        </form>
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h2 class="h5 mb-3">Ajouter / modifier un retard</h2>
+          <form id="lateForm" novalidate>
+            <input type="hidden" id="lateId">
+            <div class="row g-3">
+              <div class="col-12 col-md-6">
+                <label class="form-label" for="lateStudent">Etudiant</label>
+                <select id="lateStudent" class="form-select" required></select>
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label" for="lateDate">Date</label>
+                <input id="lateDate" class="form-control" type="date" required>
+              </div>
+              <div class="col-12 col-md-4">
+                <label class="form-label" for="lateTime">Heure (optionnel)</label>
+                <input id="lateTime" class="form-control" type="time">
+              </div>
+              <div class="col-12 col-md-4">
+                <label class="form-label" for="lateMinutes">Minutes de retard</label>
+                <input id="lateMinutes" class="form-control" type="number" min="1" required>
+              </div>
+              <div class="col-12 col-md-4">
+                <label class="form-label" for="lateJustified">Justificatif</label>
+                <select id="lateJustified" class="form-select">
+                  <option value="false">Non</option>
+                  <option value="true">Oui</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="lateReason">Motif</label>
+                <input id="lateReason" class="form-control" type="text" maxlength="180">
+              </div>
+            </div>
+            <p id="lateFormError" class="text-danger mt-2 mb-0" role="alert"></p>
+            <div class="d-flex flex-wrap gap-2 mt-3">
+              <button class="btn btn-primary" type="submit">Enregistrer retard</button>
+              <button id="cancelLateEditBtn" class="btn btn-outline-secondary" type="button">Annuler</button>
+            </div>
+          </form>
+        </div>
       </div>
 
-      <div class="card">
-        <div class="card-head">
-          <h2>Historique des retards</h2>
-          <div class="inline-actions">
-            <button id="exportLatesBtn" class="btn" type="button">Exporter CSV retards</button>
-          </div>
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-white d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2">
+          <h2 class="h5 mb-0">Historique des retards</h2>
+          <button id="exportLatesBtn" class="btn btn-outline-success" type="button">Exporter CSV retards</button>
         </div>
+        <div class="card-body">
+          <form id="lateFilters" class="row g-3 align-items-end mb-3" novalidate>
+            <div class="col-12 col-md-3">
+              <label class="form-label" for="filterDate">Date</label>
+              <input id="filterDate" class="form-control" type="date">
+            </div>
+            <div class="col-12 col-md-2">
+              <label class="form-label" for="filterGroup">Groupe</label>
+              <select id="filterGroup" class="form-select">
+                <option value="">Tous</option>
+              </select>
+            </div>
+            <div class="col-12 col-md-3">
+              <label class="form-label" for="filterStudent">Etudiant</label>
+              <select id="filterStudent" class="form-select">
+                <option value="">Tous</option>
+              </select>
+            </div>
+            <div class="col-12 col-md-2">
+              <label class="form-label" for="filterJustified">Justificatif</label>
+              <select id="filterJustified" class="form-select">
+                <option value="">Tous</option>
+                <option value="true">Oui</option>
+                <option value="false">Non</option>
+              </select>
+            </div>
+            <div class="col-12 col-md-2">
+              <label class="form-label" for="filterSort">Trier</label>
+              <select id="filterSort" class="form-select">
+                <option value="date_desc">Date desc</option>
+                <option value="minutes_desc">Minutes desc</option>
+                <option value="date_asc">Date asc</option>
+                <option value="minutes_asc">Minutes asc</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <button id="resetLateFiltersBtn" class="btn btn-outline-secondary" type="button">Reinitialiser filtres</button>
+            </div>
+          </form>
 
-        <form id="lateFilters" class="filters" novalidate>
-          <label>Date
-            <input id="filterDate" type="date">
-          </label>
-          <label>Groupe
-            <select id="filterGroup">
-              <option value="">Tous</option>
-            </select>
-          </label>
-          <label>Etudiant
-            <select id="filterStudent">
-              <option value="">Tous</option>
-            </select>
-          </label>
-          <label>Justificatif
-            <select id="filterJustified">
-              <option value="">Tous</option>
-              <option value="true">Oui</option>
-              <option value="false">Non</option>
-            </select>
-          </label>
-          <label>Trier
-            <select id="filterSort">
-              <option value="date_desc">Date desc</option>
-              <option value="minutes_desc">Minutes desc</option>
-              <option value="date_asc">Date asc</option>
-              <option value="minutes_asc">Minutes asc</option>
-            </select>
-          </label>
-          <button id="resetLateFiltersBtn" class="btn ghost" type="button">Reinitialiser filtres</button>
-        </form>
-
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Heure</th>
-                <th>Etudiant</th>
-                <th>Groupe</th>
-                <th>Minutes</th>
-                <th>Motif</th>
-                <th>Justificatif</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody id="latesTableBody"></tbody>
-          </table>
+          <div class="table-wrap">
+            <table class="table table-striped table-hover align-middle mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>Date</th>
+                  <th>Heure</th>
+                  <th>Etudiant</th>
+                  <th>Groupe</th>
+                  <th>Minutes</th>
+                  <th>Motif</th>
+                  <th>Justificatif</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="latesTableBody"></tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="stats" class="view" aria-label="Statistiques">
-      <div class="stats-grid">
-        <article class="card">
-          <div class="card-head">
-            <h2>Top 5 etudiants en retard</h2>
-            <button id="statsExportBtn" class="btn" type="button">Exporter CSV (vue courante)</button>
+      <div class="row g-3 mb-4">
+        <article class="col-12 col-lg-6">
+          <div class="card shadow-sm h-100">
+            <div class="card-header bg-white d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2">
+              <h2 class="h5 mb-0">Top 5 etudiants en retard</h2>
+              <button id="statsExportBtn" class="btn btn-outline-success" type="button">Exporter CSV (vue courante)</button>
+            </div>
+            <div class="card-body">
+              <div id="topStudentsList" class="bars"></div>
+            </div>
           </div>
-          <div id="topStudentsList" class="bars"></div>
         </article>
 
-        <article class="card">
-          <h2>Minutes cumulees par groupe</h2>
-          <div id="groupMinutesList" class="bars"></div>
+        <article class="col-12 col-lg-6">
+          <div class="card shadow-sm h-100">
+            <div class="card-body">
+              <h2 class="h5">Minutes cumulees par groupe</h2>
+              <div id="groupMinutesList" class="bars"></div>
+            </div>
+          </div>
         </article>
       </div>
     </section>
   </main>
 
   <div id="confirmModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
-    <div class="modal-card">
-      <h3 id="confirmTitle">Confirmation</h3>
-      <p id="confirmText">Etes-vous sur ?</p>
-      <div class="form-actions">
-        <button id="confirmYes" class="btn danger" type="button">Confirmer</button>
-        <button id="confirmNo" class="btn" type="button">Annuler</button>
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="confirmTitle" class="modal-title h5">Confirmation</h3>
+        </div>
+        <div class="modal-body">
+          <p id="confirmText" class="mb-0">Etes-vous sur ?</p>
+        </div>
+        <div class="modal-footer">
+          <button id="confirmYes" class="btn btn-danger" type="button">Confirmer</button>
+          <button id="confirmNo" class="btn btn-outline-secondary" type="button">Annuler</button>
+        </div>
       </div>
     </div>
   </div>
 
   <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script type="module" src="assets/js/app.js"></script>
 </body>
 </html>
