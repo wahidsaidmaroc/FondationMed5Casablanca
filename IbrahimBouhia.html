@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Ibrahim Bouhia</title>
+    <meta
+      name="description"
+      content="Portfolio moderne d'Ibrahim Bouhia, développeur web."
+    />
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#4f46e5",
+              secondary: "#22c55e",
+              dark: "#020617",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Animations personnalisées */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+      .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .scale-in {
+        opacity: 0;
+        transform: scale(0.95);
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+      }
+      .scale-in.visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .delay-1 {
+        transition-delay: 0.15s;
+      }
+      .delay-2 {
+        transition-delay: 0.3s;
+      }
+      .delay-3 {
+        transition-delay: 0.45s;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans"
+  >
+    <!-- Navbar -->
+    <header
+      class="sticky top-0 z-30 bg-slate-950/80 backdrop-blur border-b border-slate-800"
+    >
+      <div
+        class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between"
+      >
+        <a href="#hero" class="flex items-center gap-2 group">
+          <div
+            class="w-9 h-9 rounded-xl bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-sm font-semibold group-hover:scale-105 transition-transform"
+          >
+            IB
+          </div>
+          <span class="text-sm font-medium text-slate-200">
+            Ibrahim <span class="text-primary">Bouhia</span>
+          </span>
+        </a>
+        <nav class="hidden sm:flex gap-6 text-sm">
+          <a href="#apropos" class="hover:text-primary transition-colors"
+            >À propos</a
+          >
+          <a href="#projets" class="hover:text-primary transition-colors"
+            >Projets</a
+          >
+          <a href="#competences" class="hover:text-primary transition-colors"
+            >Compétences</a
+          >
+          <a href="#contact" class="hover:text-primary transition-colors"
+            >Contact</a
+          >
+        </nav>
+        <a
+          href="#contact"
+          class="text-xs sm:text-sm px-3 py-1.5 rounded-lg bg-primary hover:bg-indigo-500 transition-colors shadow-lg shadow-indigo-500/25"
+        >
+          Me contacter
+        </a>
+      </div>
+    </header>
+
+    <!-- Contenu principal -->
+    <main class="flex-1">
+      <!-- Section Hero -->
+      <section
+        id="hero"
+        class="relative overflow-hidden border-b border-slate-900 bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900"
+      >
+        <!-- Glow en arrière-plan -->
+        <div
+          class="pointer-events-none absolute inset-0 opacity-60"
+          aria-hidden="true"
+        >
+          <div
+            class="absolute -top-32 -left-10 w-64 h-64 bg-primary/40 blur-3xl rounded-full"
+          ></div>
+          <div
+            class="absolute -bottom-20 -right-10 w-72 h-72 bg-secondary/30 blur-3xl rounded-full"
+          ></div>
+        </div>
+
+        <div
+          class="relative max-w-5xl mx-auto px-4 py-16 lg:py-24 flex flex-col-reverse lg:flex-row items-center gap-12"
+        >
+          <div class="w-full lg:w-3/5 fade-in-up">
+            <p class="text-xs uppercase tracking-[0.25em] text-slate-400 mb-4">
+              Portfolio · Développeur Web
+            </p>
+            <h1
+              class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight mb-4"
+            >
+              Bonjour, je suis
+              <span class="text-primary">Ibrahim Bouhia</span>.
+            </h1>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+              Passionné par le développement web moderne, j’aime concevoir des
+              interfaces élégantes, performantes et accessibles. Mon objectif :
+              transformer des idées en expériences digitales fluides et utiles.
+            </p>
+            <div class="flex flex-wrap items-center gap-3 mb-8">
+              <a
+                href="#projets"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary hover:bg-indigo-500 text-sm font-medium transition-colors shadow-lg shadow-indigo-500/25"
+              >
+                Voir mes projets
+                <span aria-hidden="true">↗</span>
+              </a>
+              <a
+                href="#contact"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-700 hover:border-slate-500 text-sm font-medium text-slate-200 hover:text-white transition-colors"
+              >
+                Discuter d'un projet
+              </a>
+            </div>
+            <div class="flex flex-wrap gap-3 text-xs text-slate-400">
+              <span
+                class="px-3 py-1 rounded-full border border-slate-700/80 bg-slate-900/60"
+                >Front-end moderne</span
+              >
+              <span
+                class="px-3 py-1 rounded-full border border-slate-700/80 bg-slate-900/60"
+                >Tailwind CSS</span
+              >
+              <span
+                class="px-3 py-1 rounded-full border border-slate-700/80 bg-slate-900/60"
+                >JavaScript / Animations</span
+              >
+            </div>
+          </div>
+
+          <!-- Carte profil -->
+          <div
+            class="w-full lg:w-2/5 flex justify-center fade-in-up delay-1"
+          >
+            <div
+              class="relative w-64 h-72 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 border border-slate-700/60 shadow-[0_18px_60px_rgba(15,23,42,0.9)] overflow-hidden"
+            >
+              <!-- Badge -->
+              <div
+                class="absolute top-4 left-4 px-3 py-1 rounded-full bg-slate-900/80 border border-slate-700/80 text-[11px] text-slate-300 flex items-center gap-2"
+              >
+                <span
+                  class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.9)]"
+                ></span>
+                Disponible pour projets
+              </div>
+
+              <!-- Avatar simple (cercle avec initiales) -->
+              <div
+                class="absolute inset-x-0 top-12 flex justify-center"
+              >
+                <div
+                  class="w-24 h-24 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-3xl font-semibold text-white shadow-lg shadow-indigo-500/40"
+                >
+                  IB
+                </div>
+              </div>
+
+              <div class="absolute bottom-0 inset-x-0 p-5">
+                <h2 class="text-lg font-semibold mb-1 text-slate-50">
+                  Ibrahim Bouhia
+                </h2>
+                <p class="text-xs text-slate-400 mb-3">
+                  Développeur web orienté expérience utilisateur, avec un goût
+                  pour les interfaces raffinées et les détails.
+                </p>
+                <div class="flex flex-wrap gap-2 text-[11px]">
+                  <span
+                    class="px-2 py-1 rounded-full bg-slate-900/80 border border-slate-700/80 text-slate-300"
+                    >HTML · CSS · JS</span
+                  >
+                  <span
+                    class="px-2 py-1 rounded-full bg-slate-900/80 border border-slate-700/80 text-slate-300"
+                    >Tailwind CSS</span
+                  >
+                  <span
+                    class="px-2 py-1 rounded-full bg-slate-900/80 border border-slate-700/80 text-slate-300"
+                    >Responsive Design</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- À propos -->
+      <section
+        id="apropos"
+        class="max-w-5xl mx-auto px-4 py-16 lg:py-20 space-y-10"
+      >
+        <div class="fade-in-up">
+          <h2 class="text-2xl sm:text-3xl font-semibold mb-3">
+            À propos de moi
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Je suis un développeur web passionné par la création de sites
+            modernes, rapides et bien structurés. J’apprécie particulièrement
+            les interfaces minimalistes mais expressives, avec une grande
+            attention portée à la typographie, aux animations douces et à
+            l’ergonomie générale.
+          </p>
+        </div>
+
+        <div
+          class="grid md:grid-cols-3 gap-6 fade-in-up delay-1"
+        >
+          <div
+            class="rounded-2xl border border-slate-800 bg-slate-900/40 p-5 flex flex-col gap-2"
+          >
+            <h3 class="text-sm font-semibold text-slate-100">
+              Ce que je fais
+            </h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Intégration d’interfaces responsives, optimisation des
+              performances, mise en place de composants réutilisables avec une
+              attention particulière au design.
+            </p>
+          </div>
+
+          <div
+            class="rounded-2xl border border-slate-800 bg-slate-900/40 p-5 flex flex-col gap-2"
+          >
+            <h3 class="text-sm font-semibold text-slate-100">
+              Ma philosophie
+            </h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Un code propre, des interfaces claires et un parcours utilisateur
+              intuitif. Chaque détail compte pour proposer une expérience
+              cohérente.
+            </p>
+          </div>
+
+          <div
+            class="rounded-2xl border border-slate-800 bg-slate-900/40 p-5 flex flex-col gap-2"
+          >
+            <h3 class="text-sm font-semibold text-slate-100">
+              Objectifs
+            </h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Continuer à progresser sur les technologies front-end modernes,
+              collaborer sur des projets ambitieux et apporter de la valeur
+              grâce à des interfaces bien pensées.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projets -->
+      <section
+        id="projets"
+        class="border-t border-slate-900 bg-slate-950/60"
+      >
+        <div class="max-w-5xl mx-auto px-4 py-16 lg:py-20">
+          <div class="flex items-end justify-between gap-4 mb-8 fade-in-up">
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-semibold">
+                Projets récents
+              </h2>
+              <p class="text-slate-400 text-sm mt-2">
+                Une sélection de projets illustrant mon style et mes
+                compétences.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <!-- Projet 1 -->
+            <article
+              class="group rounded-2xl border border-slate-800 bg-slate-900/50 hover:border-primary/60 hover:bg-slate-900/90 transition-colors overflow-hidden scale-in"
+            >
+              <div
+                class="h-32 bg-gradient-to-tr from-primary/25 via-slate-900 to-secondary/20 group-hover:from-primary/35 group-hover:to-secondary/25 transition-colors"
+              ></div>
+              <div class="p-5 space-y-3">
+                <h3 class="text-lg font-semibold text-slate-50">
+                  Tableau de bord moderne
+                </h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                  Interface de tableau de bord responsive avec cartes, graphs
+                  stylisés et dark mode, construite avec Tailwind CSS et
+                  animations légères.
+                </p>
+                <div class="flex flex-wrap gap-2 text-[11px]">
+                  <span
+                    class="px-2 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300"
+                    >Tailwind</span
+                  >
+                  <span
+                    class="px-2 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300"
+                    >JavaScript</span
+                  >
+                  <span
+                    class="px-2 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300"
+                    >Responsive</span
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- Projet 2 -->
+            <article
+              class="group rounded-2xl border border-slate-800 bg-slate-900/50 hover:border-primary/60 hover:bg-slate-900/90 transition-colors overflow-hidden scale-in delay-1"
+            >
+              <div
+                class="h-32 bg-gradient-to-tr from-slate-800 via-primary/15 to-slate-900 group-hover:via-primary/25 transition-colors"
+              ></div>
+              <div class="p-5 space-y-3">
+                <h3 class="text-lg font-semibold text-slate-50">
+                  Landing page élégante
+                </h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                  Page d’accueil épurée pour un service digital, mettant
+                  l’accent sur la typographie, la hiérarchie visuelle et les
+                  animations au scroll.
+                </p>
+                <div class="flex flex-wrap gap-2 text-[11px]">
+                  <span
+                    class="px-2 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-2 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300"
+                    >CSS</span
+                  >
+                  <span
+                    class="px-2 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300"
+                    >Animations</span
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- Projet 3 -->
+            <article
+              class="group rounded-2xl border border-slate-800 bg-slate-900/50 hover:border-primary/60 hover:bg-slate-900/90 transition-colors overflow-hidden scale-in delay-2"
+            >
+              <div
+                class="h-32 bg-gradient-to-tr from-secondary/25 via-slate-900 to-primary/15 group-hover:from-secondary/35 group-hover:to-primary/25 transition-colors"
+              ></div>
+              <div class="p-5 space-y-3">
+                <h3 class="text-lg font-semibold text-slate-50">
+                  Portfolio minimaliste
+                </h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                  Portfolio une page avec sections claires, transitions douces
+                  et navigation fluide, conçu pour mettre en avant le contenu.
+                </p>
+                <div class="flex flex-wrap gap-2 text-[11px]">
+                  <span
+                    class="px-2 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300"
+                    >Single Page</span
+                  >
+                  <span
+                    class="px-2 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300"
+                    >UX</span
+                  >
+                  <span
+                    class="px-2 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300"
+                    >Design</span
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- Projet 4 -->
+            <article
+              class="group rounded-2xl border border-slate-800 bg-slate-900/50 hover:border-primary/60 hover:bg-slate-900/90 transition-colors overflow-hidden scale-in delay-3"
+            >
+              <div
+                class="h-32 bg-gradient-to-tr from-slate-900 via-slate-800 to-primary/20 group-hover:to-primary/30 transition-colors"
+              ></div>
+              <div class="p-5 space-y-3">
+                <h3 class="text-lg font-semibold text-slate-50">
+                  UI Components Library
+                </h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                  Collection de composants réutilisables (boutons, cartes,
+                  sections) construits avec Tailwind, prêts à être intégrés dans
+                  différents projets.
+                </p>
+                <div class="flex flex-wrap gap-2 text-[11px]">
+                  <span
+                    class="px-2 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300"
+                    >Design System</span
+                  >
+                  <span
+                    class="px-2 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300"
+                    >Reusable</span
+                  >
+                  <span
+                    class="px-2 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300"
+                    >Tailwind</span
+                  >
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Compétences -->
+      <section
+        id="competences"
+        class="max-w-5xl mx-auto px-4 py-16 lg:py-20 space-y-8"
+      >
+        <div class="fade-in-up">
+          <h2 class="text-2xl sm:text-3xl font-semibold mb-3">
+            Compétences
+          </h2>
+          <p class="text-slate-400 text-sm">
+            Un aperçu des technologies et outils que j’utilise régulièrement.
+          </p>
+        </div>
+
+        <div
+          class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 text-sm fade-in-up delay-1"
+        >
+          <div
+            class="rounded-2xl border border-slate-800 bg-slate-900/40 p-4 space-y-2"
+          >
+            <h3 class="text-slate-100 font-semibold text-sm">
+              Front-end
+            </h3>
+            <ul class="text-xs text-slate-400 space-y-1.5">
+              <li>HTML5 / Sémantique</li>
+              <li>CSS3, Flexbox, Grid</li>
+              <li>Tailwind CSS</li>
+              <li>Responsive Design</li>
+            </ul>
+          </div>
+
+          <div
+            class="rounded-2xl border border-slate-800 bg-slate-900/40 p-4 space-y-2"
+          >
+            <h3 class="text-slate-100 font-semibold text-sm">
+              JavaScript
+            </h3>
+            <ul class="text-xs text-slate-400 space-y-1.5">
+              <li>Vanilla JS (ES6+)</li>
+              <li>Animations DOM</li>
+              <li>Gestion des événements</li>
+              <li>Interactions au scroll</li>
+            </ul>
+          </div>
+
+          <div
+            class="rounded-2xl border border-slate-800 bg-slate-900/40 p-4 space-y-2"
+          >
+            <h3 class="text-slate-100 font-semibold text-sm">
+              Qualité & UX
+            </h3>
+            <ul class="text-xs text-slate-400 space-y-1.5">
+              <li>Accessibilité de base</li>
+              <li>Hiérarchie visuelle</li>
+              <li>Micro-interactions</li>
+              <li>Performances front-end</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section
+        id="contact"
+        class="border-t border-slate-900 bg-slate-950/80"
+      >
+        <div class="max-w-5xl mx-auto px-4 py-16 lg:py-20">
+          <div
+            class="max-w-xl mx-auto rounded-3xl border border-slate-800 bg-slate-900/60 p-6 sm:p-8 fade-in-up"
+          >
+            <h2 class="text-2xl sm:text-3xl font-semibold mb-3">
+              Me contacter
+            </h2>
+            <p class="text-slate-400 text-sm mb-6">
+              Vous avez un projet, une idée ou souhaitez simplement échanger ?
+              N’hésitez pas à m’envoyer un message.
+            </p>
+
+            <form
+              class="space-y-4 text-sm"
+              onsubmit="event.preventDefault(); alert('Merci pour votre message !');"
+            >
+              <div class="space-y-1.5">
+                <label
+                  for="name"
+                  class="block text-xs font-medium text-slate-300"
+                  >Nom</label
+                >
+                <input
+                  id="name"
+                  type="text"
+                  placeholder="Votre nom"
+                  class="w-full px-3 py-2 rounded-lg bg-slate-950/60 border border-slate-800 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary/60 text-sm"
+                  required
+                />
+              </div>
+              <div class="space-y-1.5">
+                <label
+                  for="email"
+                  class="block text-xs font-medium text-slate-300"
+                  >Email</label
+                >
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="vous@example.com"
+                  class="w-full px-3 py-2 rounded-lg bg-slate-950/60 border border-slate-800 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary/60 text-sm"
+                  required
+                />
+              </div>
+              <div class="space-y-1.5">
+                <label
+                  for="message"
+                  class="block text-xs font-medium text-slate-300"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  rows="4"
+                  placeholder="Parlez-moi de votre projet..."
+                  class="w-full px-3 py-2 rounded-lg bg-slate-950/60 border border-slate-800 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary/60 text-sm resize-none"
+                  required
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-primary hover:bg-indigo-500 text-sm font-medium transition-colors shadow-lg shadow-indigo-500/25"
+              >
+                Envoyer le message
+              </button>
+            </form>
+
+            <div class="mt-6 text-xs text-slate-500 space-y-1.5">
+              <p>
+                Vous pouvez également adapter cette section avec vos
+                coordonnées :
+              </p>
+              <p>
+                <span class="text-slate-300">Email :</span>
+                <span class="text-slate-400">votre.email@example.com</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="border-t border-slate-900 bg-slate-950/90 text-[11px] text-slate-500"
+    >
+      <div
+        class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-2"
+      >
+        <p>© <span id="year"></span> Ibrahim Bouhia. Tous droits réservés.</p>
+        <p class="text-slate-600">
+          Construit avec <span class="text-primary">HTML</span>, Tailwind et
+          JavaScript.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Scripts pour animations -->
+    <script>
+      // Met à jour automatiquement l'année dans le footer
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Fonction pour gérer les animations d'entrée et au scroll
+      (function () {
+        const animatedEls = document.querySelectorAll(
+          ".fade-in-up, .scale-in"
+        );
+
+        const reveal = (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        };
+
+        const observer = new IntersectionObserver(reveal, {
+          threshold: 0.15,
+        });
+
+        animatedEls.forEach((el) => observer.observe(el));
+      })();
+    </script>
+  </body>
+</html>
