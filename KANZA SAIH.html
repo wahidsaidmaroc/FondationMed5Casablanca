@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KANZA SAIH - Consultant Technico-Fonctionnel Odoo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+        }
+
+        /* Header Hero */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            animation: slideDown 0.8s ease;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            margin-bottom: 2rem;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Sections */
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #764ba2;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: #764ba2;
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-grid p {
+            text-align: justify;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .about-grid ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .about-grid li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .about-grid li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+            border-left-color: #764ba2;
+        }
+
+        .skill-card h3 {
+            margin-top: 0;
+        }
+
+        .skill-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .skill-card li {
+            padding: 0.3rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .skill-card li:before {
+            content: "►";
+            position: absolute;
+            left: 0;
+            color: #764ba2;
+            font-size: 0.8rem;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            padding: 1.5rem;
+            border-left: 4px solid #667eea;
+            margin-bottom: 2rem;
+            background: linear-gradient(90deg, #667eea05 0%, transparent 100%);
+            border-radius: 5px;
+        }
+
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience-item h3 {
+            margin-top: 0;
+            color: #764ba2;
+        }
+
+        .job-title {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+
+        .job-date {
+            color: #999;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-description {
+            margin-top: 0.5rem;
+            text-align: justify;
+        }
+
+        .job-description ul {
+            margin-top: 0.5rem;
+            margin-left: 1.5rem;
+        }
+
+        .job-description li {
+            margin: 0.3rem 0;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-top: 3px solid #667eea;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            border-top-color: #764ba2;
+        }
+
+        .project-card h3 {
+            margin-top: 0;
+            color: #667eea;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0 0 0;
+            margin-top: auto;
+        }
+
+        .tag {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .contact-item {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: #667eea;
+            min-width: 30px;
+        }
+
+        .contact-info a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #667eea;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .about-grid,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 1.5rem 1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Certifications */
+        .cert-item {
+            background: linear-gradient(90deg, #667eea05 0%, transparent 100%);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+        }
+
+        .cert-item strong {
+            color: #667eea;
+        }
+
+        .cert-item .cert-date {
+            color: #999;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#a-propos">À Propos</a></li>
+            <li><a href="#competences">Compétences</a></li>
+            <li><a href="#experience">Expérience</a></li>
+            <li><a href="#projets">Projets</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <div class="header" id="accueil">
+        <h1>KANZA SAIH</h1>
+        <p>Consultant Technico-Fonctionnel Odoo</p>
+        <div class="subtitle">Expertise en implémentation ERP et optimisation des processus métier</div>
+    </div>
+
+    <div class="container">
+        <!-- About Section -->
+        <section id="a-propos">
+            <h2>À Propos</h2>
+            <div class="about-grid">
+                <div>
+                    <h3>Qui suis-je ?</h3>
+                    <p>
+                        Je suis un consultant technico-fonctionnel Odoo expérimenté avec une expertise particulière 
+                        dans l'implémentation, la configuration et l'optimisation des systèmes ERP. Je combine une 
+                        connaissance approfondie des modules Odoo avec une compréhension fine des processus métier 
+                        pour délivrer des solutions adaptées aux besoins spécifiques de chaque entreprise.
+                    </p>
+                    <p>
+                        Mon approche associe rigueur technique et sensibilité aux enjeux fonctionnels, permettant 
+                        de garantir la succès des projets et la satisfaction durable des utilisateurs finaux.
+                    </p>
+                </div>
+                <div>
+                    <h3>Mes Forces</h3>
+                    <ul>
+                        <li>Implémentation et configuration Odoo</li>
+                        <li>Gestion complète du cycle de vie ERP</li>
+                        <li>Optimisation des processus métier</li>
+                        <li>Formation et accompagnement utilisateurs</li>
+                        <li>Support technique et maintenance</li>
+                        <li>Gestion de projets agiles</li>
+                        <li>Customisation et développement Python</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="competences">
+            <h2>Compétences</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Modules Odoo</h3>
+                    <ul>
+                        <li>Ventes (Sales)</li>
+                        <li>Achats (Purchase)</li>
+                        <li>Inventaire (Inventory)</li>
+                        <li>Comptabilité (Accounting)</li>
+                        <li>Ressources Humaines (HR)</li>
+                        <li>Gestion de Projets (Project)</li>
+                        <li>CRM</li>
+                        <li>Fabrication (MRP)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Compétences Techniques</h3>
+                    <ul>
+                        <li>Python (développement Odoo)</li>
+                        <li>XML et JavaScript</li>
+                        <li>PostgreSQL</li>
+                        <li>API REST</li>
+                        <li>ORM Odoo</li>
+                        <li>Customisation de workflows</li>
+                        <li>Gestion de bases de données</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Compétences Fonctionnelles</h3>
+                    <ul>
+                        <li>Analyse des besoins métier</li>
+                        <li>Business Process Engineering</li>
+                        <li>Gestion des données</li>
+                        <li>Reporting et Analytics</li>
+                        <li>Conformité réglementaire</li>
+                        <li>Migration de données</li>
+                        <li>Intégration de systèmes</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Outils & Méthodologies</h3>
+                    <ul>
+                        <li>Agile & Scrum</li>
+                        <li>Git & GitHub</li>
+                        <li>JIRA</li>
+                        <li>SQL & pgAdmin</li>
+                        <li>Postman</li>
+                        <li>Gestion de configuration</li>
+                        <li>Documentation technique</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Expérience Professionnelle</h2>
+
+            <div class="experience-item">
+                <h3>Consultant Odoo Senior</h3>
+                <div class="job-title">Implémentation ERP & Optimisation Processus</div>
+                <div class="job-date">2022 - Présent</div>
+                <div class="job-description">
+                    <ul>
+                        <li>Direction technique de projets d'implémentation Odoo complexes</li>
+                        <li>Configuration et customisation de modules Odoo (Ventes, Achats, Comptabilité, Inventaire)</li>
+                        <li>Développement de modules custom en Python et JavaScript</li>
+                        <li>Migration de données provenant de systèmes hérités</li>
+                        <li>Formation et accompagnement des users finaux</li>
+                        <li>Optimisation des performances et des processus métier</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <h3>Consultant Fonctionnel Odoo</h3>
+                <div class="job-title">Analyse et Implémentation</div>
+                <div class="job-date">2020 - 2022</div>
+                <div class="job-description">
+                    <ul>
+                        <li>Analyse détaillée des besoins clients et recommandations de solutions</li>
+                        <li>Configuration des modules Ventes, Achats et Inventaire</li>
+                        <li>Création de rapports et dashboards personnalisés</li>
+                        <li>Support utilisateur et gestion des incidents</li>
+                        <li>Documentation des spécifications fonctionnelles</li>
+                        <li>Testing et assurance qualité</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <h3>Assistant Consultant Odoo</h3>
+                <div class="job-title">Support & Configuration</div>
+                <div class="job-date">2019 - 2020</div>
+                <div class="job-description">
+                    <ul>
+                        <li>Support technique auprès des utilisateurs</li>
+                        <li>Configuration de base des modules Odoo</li>
+                        <li>Participation à des projets d'implémentation</li>
+                        <li>Documentation et création de guides utilisateurs</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section>
+            <h2>Certifications & Formation</h2>
+            <div class="cert-item">
+                <strong>Certification Odoo Developer</strong>
+                <div class="cert-date">2022</div>
+                <p>Certification officielle Odoo - Développement et customisation</p>
+            </div>
+            <div class="cert-item">
+                <strong>Certification Odoo Functional Consultant</strong>
+                <div class="cert-date">2021</div>
+                <p>Certification officielle Odoo - Consultation fonctionnelle</p>
+            </div>
+            <div class="cert-item">
+                <strong>Master Spécialisé - Systèmes d'Information</strong>
+                <div class="cert-date">2019</div>
+                <p>Formation en gestion de projets ERP et systèmes informatiques</p>
+            </div>
+            <div class="cert-item">
+                <strong>Licence - Informatique de Gestion</strong>
+                <div class="cert-date">2018</div>
+                <p>Formation de base en informatique et gestion d'entreprise</p>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projets">
+            <h2>Projets Réalisés</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Implémentation ERP Complète</h3>
+                    <p>Implémentation d'Odoo complète pour une PME incluant Ventes, Achats, Inventaire et Comptabilité 
+                    avec migration de données et formation utilisateurs.</p>
+                    <div class="project-tags">
+                        <span class="tag">Odoo</span>
+                        <span class="tag">ERP</span>
+                        <span class="tag">Migration</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Module de Gestion de Projets</h3>
+                    <p>Développement d'un module custom pour la gestion avancée de projets avec allocation de ressources,
+                    suivi budgétaire et reporting analytique.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Custom</span>
+                        <span class="tag">Project</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Intégration Commerce Électronique</h3>
+                    <p>Intégration d'une plateforme e-commerce avec Odoo pour synchronisation automatique des commandes,
+                    stocks et facturations en temps réel.</p>
+                    <div class="project-tags">
+                        <span class="tag">API</span>
+                        <span class="tag">Integration</span>
+                        <span class="tag">Ecommerce</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Optimisation Processus Achats</h3>
+                    <p>Analyse et optimisation du flux d'achats - automatisation des appels d'offres, gestion des 
+                    fournisseurs et workflows d'approbation.</p>
+                    <div class="project-tags">
+                        <span class="tag">Processus</span>
+                        <span class="tag">Purchase</span>
+                        <span class="tag">Automation</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Dashboard & Reporting</h3>
+                    <p>Création de dashboards et rapports personnalisés pour le pilotage d'activité avec KPIs 
+                    en temps réel et analytics avancées.</p>
+                    <div class="project-tags">
+                        <span class="tag">Reporting</span>
+                        <span class="tag">Dashboard</span>
+                        <span class="tag">Analytics</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Formation & Support</h3>
+                    <p>Conception et animation de programmes de formation pour utilisateurs finaux avec création 
+                    de documentation complète et support post-déploiement.</p>
+                    <div class="project-tags">
+                        <span class="tag">Formation</span>
+                        <span class="tag">Support</span>
+                        <span class="tag">Documentation</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Informations de Contact</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <strong>Email</strong><br>
+                            <a href="mailto:contact@kanzasaih.com">contact@kanzasaih.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <strong>Téléphone</strong><br>
+                            <a href="tel:+212600000000">+212 6 XX XXX XXX</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Localisation</strong><br>
+                            Casablanca, Maroc
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">💼</div>
+                        <div>
+                            <strong>LinkedIn</strong><br>
+                            <a href="https://linkedin.com/in/kanzasaih" target="_blank">linkedin.com/in/kanzasaih</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">🐙</div>
+                        <div>
+                            <strong>GitHub</strong><br>
+                            <a href="https://github.com/kanzasaih" target="_blank">github.com/kanzasaih</a>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nom</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit">Envoyer le Message</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 KANZA SAIH - Consultant Technico-Fonctionnel Odoo. Tous droits réservés.</p>
+        <p>Expertise ERP | Implémentation Odoo | Optimisation Processus Métier</p>
+        <p>Créé avec passion pour l'excellence technique et fonctionnelle</p>
+    </footer>
+
+    <script>
+        // Smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission (vous pouvez ajouter votre service d'email ici)
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre message ! Je vous recontacterai très bientôt.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
