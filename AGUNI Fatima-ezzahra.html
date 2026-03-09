@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGUNI Fatima-ezzahra - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-top: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .header-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #667eea;
+            margin: 1rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        /* Sections */
+        .section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        /* À propos */
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* Compétences */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .skill-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Expérience */
+        .experience-item {
+            padding: 1.5rem;
+            border-left: 4px solid #667eea;
+            margin-bottom: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .experience-item h3 {
+            color: #333;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-item .job-title {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .date {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item p {
+            color: #666;
+        }
+
+        /* Projets */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-info p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* Contact */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .contact-item a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-radius: 10px;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .section {
+                padding: 1rem;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#experience">Expérience</a></li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Header / Accueil -->
+        <section id="accueil" class="header">
+            <div class="header-image">👩‍💼</div>
+            <h1>AGUNI Fatima-ezzahra</h1>
+            <p><strong>Doctorante | Contrôleuse de Gestion</strong></p>
+            <p>Expertise en contrôle de gestion, intelligence artificielle et optimisation des performances organisationnelles</p>
+            <div style="margin-top: 1.5rem; font-size: 0.95rem; color: #666;">
+                <p>📧 <a href="mailto:agunifatimazahra@gmail.com" style="color: #667eea; text-decoration: none;">agunifatimazahra@gmail.com</a></p>
+                <p>📱 <a href="tel:+212687570511" style="color: #667eea; text-decoration: none;">+212 687 570 511</a></p>
+                <p>📍 Casablanca, Maroc | Permis B</p>
+            </div>
+        </section>
+
+        <!-- À propos -->
+        <section id="apropos" class="section">
+            <h2>À propos de moi</h2>
+            <div class="about-text">
+                <p>Doctorante en sciences de gestion spécialisée dans l'intelligence artificielle et la performance organisationnelle. Contrôleuse de gestion avec une expérience solide en pilotage budgétaire, analyse financière et optimisation des processus d'entreprise.</p>
+                <p style="margin-top: 1rem;">Passionnée par les technologies émergentes et leur intégration dans la gestion d'entreprise, je combine expertise financière et compétences digitales pour accompagner les organisations dans leur transformation. Forte de multiples certifications en IA, marketing digital et transformation verte, je suis prête à apporter une valeur ajoutée significative à vos projets.</p>
+            </div>
+        </section>
+
+        <!-- Compétences -->
+        <section id="competences" class="section">
+            <h2>Compétences</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>📊 Bureautique & Outils numériques</h3>
+                    <p><strong>MS Office</strong> (Excel, Word, PowerPoint) | <strong>Power BI</strong> (reporting, data visualization) | <strong>WordPress</strong> (CMS, web)</p>
+                </div>
+                <div class="skill-card">
+                    <h3>💼 ERP & Gestion</h3>
+                    <p><strong>Odoo</strong> (ERP) | <strong>Sage 100</strong> (comptabilité, gestion) | <strong>CRM</strong> (relation client)</p>
+                </div>
+                <div class="skill-card">
+                    <h3>🤖 Data & Intelligence Artificielle</h3>
+                    <p><strong>Python</strong> (bases) | <strong>Prompt Engineering</strong> | <strong>Vibe Coding</strong></p>
+                </div>
+                <div class="skill-card">
+                    <h3>💰 Contrôle de Gestion</h3>
+                    <p>Élaboration budgétaire | Analyse des écarts | Suivi des KPI | Tableaux de bord</p>
+                </div>
+                <div class="skill-card">
+                    <h3>🏦 Gestion de Trésorerie</h3>
+                    <p>Gestion des flux de trésorerie | Optimisation des liquidités | Planification financière</p>
+                </div>
+                <div class="skill-card">
+                    <h3>📈 Analyse Financière</h3>
+                    <p>Analyse comptable | Déclarations fiscales | Reporting financier | États financiers</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Langues -->
+        <section class="section">
+            <h2>🌍 Langues</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Arabe</h3>
+                    <p><strong>Langue Maternelle</strong></p>
+                </div>
+                <div class="skill-card">
+                    <h3>Français</h3>
+                    <p><strong>Courant</strong></p>
+                </div>
+                <div class="skill-card">
+                    <h3>Anglais</h3>
+                    <p><strong>Opérationnel</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="section">
+            <h2>📜 Certifications</h2>
+            <div class="experience-item">
+                <div class="job-title">Certification en Intelligence Artificielle appliquée à la gestion de projet</div>
+                <div class="date">Planera Inc. avec le CNRST & Université Ibn Tofaïl</div>
+            </div>
+            <div class="experience-item">
+                <div class="job-title">Certification en Marketing Digital</div>
+                <div class="date">Association Al Jisr</div>
+            </div>
+            <div class="experience-item">
+                <div class="job-title">Certification en Création d'Assistants Personnalisés OpenAI (GPTs)</div>
+                <div class="date">Programme Proactive - Direction Régionale OFPPT Fès-Meknès</div>
+            </div>
+            <div class="experience-item">
+                <div class="job-title">Certification en Transformation Verte pour les Entreprises</div>
+                <div class="date">Programme Proactive & Direction Régionale OFPPT Fès-Meknès</div>
+            </div>
+        </section>
+
+        <!-- Études -->
+        <section class="section">
+            <h2>🎓 Formation Académique</h2>
+            <div class="experience-item">
+                <h3>Doctorante en Sciences de Gestion</h3>
+                <div class="job-title">Axe: Intelligence Artificielle et Performance Organisationnelle</div>
+                <div class="date">2024 - Présent | Faculté Polydisciplinaire, Université Sultan Moulay Slimane, Khouribga</div>
+            </div>
+            <div class="experience-item">
+                <h3>Master CCA - Comptabilité, Contrôle et Audit</h3>
+                <div class="date">2022 - 2024 | Faculté d'Économie et de Gestion, Université Sultan Moulay Slimane, Béni Mellal</div>
+            </div>
+            <div class="experience-item">
+                <h3>Licence en Sciences de Gestion</h3>
+                <div class="date">2019 - 2022 | Faculté des Sciences Juridiques Économiques et Sociales Ain Chock, Casablanca</div>
+            </div>
+            <div class="experience-item">
+                <h3>Baccalauréat en Sciences de Gestion Comptable</h3>
+                <div class="date">2019 | Lycée Oued Eddahab, Casablanca</div>
+            </div>
+        </section>
+
+        <!-- Expérience -->
+        <section id="experience" class="section">
+            <h2>Expérience Professionnelle</h2>
+            <div class="experience-item">
+                <h3>INAPCO</h3>
+                <div class="job-title">Comptable</div>
+                <div class="date">Janvier 2025 - Août 2025 | Casablanca, Maroc</div>
+                <p>✓ Gestion de la trésorerie : supervision des flux quotidiens et optimisation à court et moyen terme<br>
+                ✓ Saisie et traitement des opérations comptables courantes (factures, pièces bancaires, notes de frais)<br>
+                ✓ Préparation et suivi des déclarations fiscales et sociales (TVA, IR, IS, CNSS)<br>
+                ✓ Analyse des comptes et justification des écarts</p>
+            </div>
+            <div class="experience-item">
+                <h3>URBAGEC SARL</h3>
+                <div class="job-title">Contrôleuse de Gestion</div>
+                <div class="date">Février 2024 - Juin 2025 | Mohammedia, Maroc</div>
+                <p>✓ Élaboration des budgets pour chaque chantier et analyse des écarts budgétaires<br>
+                ✓ Mise en place et suivi des indicateurs de performance (KPI)<br>
+                ✓ Création et mise à jour de tableaux de bord de suivi (coûts, délais, qualité)<br>
+                ✓ Appui à la préparation des états financiers et rapports de gestion<br>
+                ✓ Participation aux clôtures mensuelles et annuelles</p>
+            </div>
+            <div class="experience-item">
+                <h3>URBAGEC SARL</h3>
+                <div class="job-title">Chargée de la Trésorerie</div>
+                <div class="date">Juin 2024 - Décembre 2024 | Mohammedia, Maroc</div>
+                <p>✓ Suivi des encaissements et décaissements, gestion des relations bancaires<br>
+                ✓ Préparation et suivi des règlements fournisseurs dans le respect des délais<br>
+                ✓ Élaboration des plans de trésorerie court et long terme<br>
+                ✓ Reporting régulier sur la situation de la trésorerie à la direction générale</p>
+            </div>
+            <div class="experience-item">
+                <h3>IAS Consulting</h3>
+                <div class="job-title">Aide Comptable</div>
+                <div class="date">Juin 2023 - Juillet 2023 | Casablanca, Maroc</div>
+                <p>✓ Tenue de la comptabilité générale<br>
+                ✓ Préparation des états financiers et déclarations fiscales<br>
+                ✓ Élaboration de reportings financiers</p>
+            </div>
+        </section>
+
+        <!-- Projets Académiques -->
+        <section id="projets" class="section">
+            <h2>Projets Académiques & Recherche</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">📊</div>
+                    <div class="project-info">
+                        <h3>PFE - Impact du Budget de Projet sur la Performance BTP</h3>
+                        <p>Étude sur l'élaboration du budget de projet et son impact sur la performance du secteur BTP (FEG Béni Mellal)</p>
+                        <div class="project-tags">
+                            <span class="tag">Contrôle Gestion</span>
+                            <span class="tag">BTP</span>
+                            <span class="tag">Performance</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">🤖</div>
+                    <div class="project-info">
+                        <h3>Intelligence Artificielle et Contrôle de Gestion</h3>
+                        <p>Vers une nouvelle gouvernance des entreprises marocaines - Étude présentée à IHEC Carthage</p>
+                        <div class="project-tags">
+                            <span class="tag">IA</span>
+                            <span class="tag">Gouvernance</span>
+                            <span class="tag">Recherche</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">💼</div>
+                    <div class="project-info">
+                        <h3>IA et Résilience Économique</h3>
+                        <p>L'apport de l'IA dans la fonction Contrôle de Gestion : un levier pour la résilience économique (Faculté Polydisciplinaire de Khouribga)</p>
+                        <div class="project-tags">
+                            <span class="tag">Résilience</span>
+                            <span class="tag">IA</span>
+                            <span class="tag">KPI</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">🎨</div>
+                    <div class="project-info">
+                        <h3>Marketing Digital - Identité Visuelle</h3>
+                        <p>Création et déploiement d'une identité visuelle complète : charte graphique, supports marketing et stratégie de communication digitale</p>
+                        <div class="project-tags">
+                            <span class="tag">Branding</span>
+                            <span class="tag">Design</span>
+                            <span class="tag">Marketing</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">📱</div>
+                    <div class="project-info">
+                        <h3>Viral Content & Short Films</h3>
+                        <p>Masterclass en création de contenu viral et réalisation de films courts avec le Programme Proactive & OFPPT</p>
+                        <div class="project-tags">
+                            <span class="tag">Contenu</span>
+                            <span class="tag">Vidéo</span>
+                            <span class="tag">Digital</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">🌱</div>
+                    <div class="project-info">
+                        <h3>Transformation Verte</h3>
+                        <p>Certification en Transformation Verte pour les Entreprises - Programme Proactive & OFPPT Fès-Meknès</p>
+                        <div class="project-tags">
+                            <span class="tag">Durabilité</span>
+                            <span class="tag">Transition</span>
+                            <span class="tag">Entreprise</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expériences Pédagogiques -->
+        <section class="section">
+            <h2>📚 Expériences Pédagogiques</h2>
+            <div class="experience-item">
+                <h3>Formatrice en Marketing Digital & Personal Branding</h3>
+                <div class="job-title">Visionary Marketing Circle</div>
+                <div class="date">Avril 2025 - Aujourd'hui</div>
+                <p>✓ Conception et animation de modules de formation (réseaux sociaux, stratégie de contenu, outils numériques)<br>
+                ✓ Accompagnement des participants dans le développement de leur personal branding et visibilité professionnelle en ligne<br>
+                ✓ Évaluation des besoins, préparation de supports pédagogiques et suivi de la progression des apprenants</p>
+            </div>
+            <div class="experience-item">
+                <h3>Encadrante d'Étudiants PFE</h3>
+                <div class="job-title">Faculté Polydisciplinaire de Khouribga</div>
+                <div class="date">Janvier 2025 - Juin 2025</div>
+                <p>✓ Accompagnement et suivi de projets de fin d'études dans le domaine de la gestion<br>
+                ✓ Conseil méthodologique et orientation dans la rédaction et la présentation des travaux<br>
+                ✓ Suivi et évaluation de l'avancement des projets en collaboration avec les étudiants</p>
+            </div>
+        </section>
+
+        <!-- Activités Parascolaires -->
+        <section class="section">
+            <h2>🎯 Activités Parascolaires & Engagements</h2>
+            <div class=\"experience-item\">
+                <h3>Membre du club Enactus (FEG Béni Mellal)</h3>
+                <p><strong>Rôle:</strong> Comité d'organisation des événements</p>
+            </div>
+            <div class=\"experience-item\">
+                <h3>Membre du club ChangeMakers (FEG Béni Mellal)</h3>
+                <p><strong>Rôle:</strong> Comité de Communication</p>
+            </div>
+            <div class=\"experience-item\">
+                <h3>Projets de Recherche Présentes</h3>
+                <p>✓ Les Critères Essentiels d'Octroi de Crédits Bancaires (FSJES Ain Chok, Casablanca)<br>
+                ✓ L'impact de la publicité sur le comportement du consommateur (FSJES Hassan 2)</p>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="section">
+            <h2>Me Contacter</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>📧 Email</h3>
+                    <a href="mailto:agunifatimazahra@gmail.com">agunifatimazahra@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <h3>📱 Téléphone</h3>
+                    <a href="tel:+212687570511">+212 687 570 511</a>
+                </div>
+                <div class="contact-item">
+                    <h3>🔗 LinkedIn</h3>
+                    <a href="https://linkedin.com/in/fatimazahra-aguni-938102251" target="_blank">Fatimazahra AGUNI</a>
+                </div>
+                <div class="contact-item">
+                    <h3>📍 Localisation</h3>
+                    <p>Casablanca, Maroc</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 AGUNI Fatima-ezzahra. Tous les droits réservés.</p>
+            <p>Portfolio créé avec passion et dévouement</p>
+        </footer>
+    </div>
+</body>
+</html>
