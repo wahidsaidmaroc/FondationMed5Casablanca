@@ -1,0 +1,21 @@
+name: Hello World Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Step 1 = Get Code
+        uses: actions/checkout@v3
+
+      - name: Step 2 = Print Hello World
+        run: echo "Hello World!"
+
+      - name: Step 3 = Print current date
+        run: date
