@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abdelhamid ALAOUI | Portfolio</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      /* animation initial state */
+      .hidden-section {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s ease;
+      }
+
+      /* animation visible */
+      .show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* gradient animation */
+      .gradient-text {
+        background: linear-gradient(90deg, #3b82f6, #9333ea, #ec4899);
+        background-size: 200%;
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: gradientMove 5s infinite linear;
+      }
+
+      @keyframes gradientMove {
+        0% {
+          background-position: 0%;
+        }
+        100% {
+          background-position: 200%;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-950 text-white">
+    <!-- Navbar -->
+    <header
+      class="fixed w-full top-0 bg-gray-950/80 backdrop-blur border-b border-gray-800 z-50"
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <h1 class="text-xl font-bold gradient-text">Abdelhamid ALAOUI</h1>
+
+        <nav class="space-x-6 text-gray-300">
+          <a href="#about" class="hover:text-blue-400">À propos</a>
+          <a href="#education" class="hover:text-blue-400">Formation</a>
+          <a href="#skills" class="hover:text-blue-400">Compétences</a>
+          <a href="#projects" class="hover:text-blue-400">Projets</a>
+          <a href="#contact" class="hover:text-blue-400">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section
+      class="min-h-screen flex items-center justify-center text-center px-6"
+    >
+      <div class="max-w-3xl hidden-section">
+        <h2 class="text-5xl md:text-6xl font-bold mb-6">
+          Bonjour, Je suis <span class="gradient-text">Abdelhamid ALAOUI</span>
+        </h2>
+
+        <p class="text-gray-400 text-lg mb-8">
+          Ingénieur en Informatique et Réseaux spécialisé en développement web et gestion de plateformes.
+          Je crée des applications scalables et des expériences utilisateur modernes.
+        </p>
+
+        <div class="flex justify-center gap-4 mb-8">
+          <div class="text-sm text-gray-400">
+            <span class="block font-semibold text-white">📧 Email</span>
+            abdelhamid.alaoui9@gmail.com
+          </div>
+          <div class="text-sm text-gray-400">
+            <span class="block font-semibold text-white">📱 Téléphone</span>
+            0631416989
+          </div>
+        </div>
+
+        <a
+          href="#projects"
+          class="px-8 py-3 bg-blue-600 rounded-xl hover:bg-blue-500 transition"
+        >
+          Voir mes projets
+        </a>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-24 px-6 bg-gray-900">
+      <div class="max-w-5xl mx-auto hidden-section">
+        <h3 class="text-3xl font-bold mb-6">À propos de moi</h3>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <p class="text-gray-400 leading-relaxed mb-4">
+              Étudiant en Ingénierie Informatique et Réseaux à l'École Marocaine des Sciences de l'Ingénieur (EMSI) à Casablanca.
+              Passionné par le développement web et la gestion de systèmes informatiques.
+            </p>
+            <p class="text-gray-400 leading-relaxed">
+              Avec une solide formation en réseau informatique et méthodes informatiques appliquées, 
+              je combine expertise technique et capacité d'adaptation pour développer des solutions innovantes.
+            </p>
+          </div>
+
+          <div class="bg-gray-800 p-6 rounded-xl">
+            <h4 class="font-semibold mb-4 text-blue-400">Informations personnelles</h4>
+            <ul class="text-gray-400 space-y-2 text-sm">
+              <li><strong>Date de naissance:</strong> 09/05/2001</li>
+              <li><strong>Nationalité:</strong> Marocain</li>
+              <li><strong>Statut:</strong> Célibataire</li>
+              <li><strong>Adresse:</strong> HAY SADRI GR 04 RUE 29 N35 CASABLANCA</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="py-24 px-6">
+      <div class="max-w-5xl mx-auto hidden-section">
+        <h3 class="text-3xl font-bold mb-12 text-center">Formation</h3>
+
+        <div class="space-y-6">
+          <div class="bg-gray-900 p-6 rounded-xl border-l-4 border-blue-500">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="text-xl font-semibold">Ingénierie Informatique et Réseaux</h4>
+              <span class="text-sm text-gray-400">2023 - 2026</span>
+            </div>
+            <p class="text-gray-400">École Marocaine des Sciences de l'Ingénieur - Casablanca</p>
+          </div>
+
+          <div class="bg-gray-900 p-6 rounded-xl border-l-4 border-purple-500">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="text-xl font-semibold">Licence Professionnelle en Méthodes Informatiques Appliquées à la Gestion des Entreprises</h4>
+              <span class="text-sm text-gray-400">2022 - 2023</span>
+            </div>
+            <p class="text-gray-400">Faculté des Sciences et Techniques - SETTAT</p>
+          </div>
+
+          <div class="bg-gray-900 p-6 rounded-xl border-l-4 border-pink-500">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="text-xl font-semibold">Diplôme Technicien Spécialisé en Réseau Informatique</h4>
+              <span class="text-sm text-gray-400">2020 - 2022</span>
+            </div>
+            <p class="text-gray-400">Institut Spécialisé de Technologie Appliquée - CASABLANCA</p>
+          </div>
+
+          <div class="bg-gray-900 p-6 rounded-xl border-l-4 border-green-500">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="text-xl font-semibold">Baccalauréat Science de Vie et de la Terre</h4>
+              <span class="text-sm text-gray-400">2019 - 2020</span>
+            </div>
+            <p class="text-gray-400">Lycée Abdelmalek Saidi - CASABLANCA</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="py-24 bg-gray-900 px-6">
+      <div class="max-w-5xl mx-auto hidden-section">
+        <h3 class="text-3xl font-bold mb-12 text-center">Compétences</h3>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h4 class="font-semibold mb-4 text-blue-400">Langages de programmation</h4>
+            <div class="space-y-3">
+              <div class="p-4 bg-gray-800 rounded-xl hover:scale-105 transition">
+                <h5 class="font-semibold">HTML</h5>
+              </div>
+              <div class="p-4 bg-gray-800 rounded-xl hover:scale-105 transition">
+                <h5 class="font-semibold">CSS</h5>
+              </div>
+              <div class="p-4 bg-gray-800 rounded-xl hover:scale-105 transition">
+                <h5 class="font-semibold">PHP</h5>
+              </div>
+              <div class="p-4 bg-gray-800 rounded-xl hover:scale-105 transition">
+                <h5 class="font-semibold">Python</h5>
+              </div>
+              <div class="p-4 bg-gray-800 rounded-xl hover:scale-105 transition">
+                <h5 class="font-semibold">SQL</h5>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-semibold mb-4 text-purple-400">Technologies & Frameworks</h4>
+            <div class="space-y-3">
+              <div class="p-4 bg-gray-800 rounded-xl hover:scale-105 transition">
+                <h5 class="font-semibold">Django</h5>
+              </div>
+              <div class="p-4 bg-gray-800 rounded-xl hover:scale-105 transition">
+                <h5 class="font-semibold">JavaScript</h5>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-semibold mb-4 text-pink-400">Langues</h4>
+            <div class="space-y-3">
+              <div class="p-4 bg-gray-800 rounded-xl hover:scale-105 transition">
+                <h5 class="font-semibold">Arabe</h5>
+              </div>
+              <div class="p-4 bg-gray-800 rounded-xl hover:scale-105 transition">
+                <h5 class="font-semibold">Français</h5>
+              </div>
+              <div class="p-4 bg-gray-800 rounded-xl hover:scale-105 transition">
+                <h5 class="font-semibold">Anglais</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12">
+          <h4 class="font-semibold mb-4 text-green-400 text-center">Certifications</h4>
+          <div class="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+            <div class="p-4 bg-gray-800 rounded-xl text-center hover:scale-105 transition">
+              <h5 class="font-semibold">Excel - OpenClassrooms</h5>
+            </div>
+            <div class="p-4 bg-gray-800 rounded-xl text-center hover:scale-105 transition">
+              <h5 class="font-semibold">Python - OpenClassrooms</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12">
+          <h4 class="font-semibold mb-4 text-orange-400 text-center">Autres compétences</h4>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="p-4 bg-gray-800 rounded-xl hover:scale-105 transition">
+              <p class="text-sm text-gray-300">Logiciels de développement et de maintenance informatique</p>
+            </div>
+            <div class="p-4 bg-gray-800 rounded-xl hover:scale-105 transition">
+              <p class="text-sm text-gray-300">Outils informatiques bancaires</p>
+            </div>
+            <div class="p-4 bg-gray-800 rounded-xl hover:scale-105 transition">
+              <p class="text-sm text-gray-300">Installation des périphériques en réseau</p>
+            </div>
+            <div class="p-4 bg-gray-800 rounded-xl hover:scale-105 transition">
+              <p class="text-sm text-gray-300">Capacité d'adaptation et polyvalence</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-24 px-6">
+      <div class="max-w-6xl mx-auto hidden-section">
+        <h3 class="text-3xl font-bold mb-12 text-center">Projets & Expériences</h3>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-gray-900 rounded-xl overflow-hidden hover:scale-105 transition">
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-3">
+                <h4 class="text-xl font-semibold">Plateforme de Gestion de Stage</h4>
+                <span class="text-xs text-gray-400">Août 2024</span>
+              </div>
+              <p class="text-sm text-blue-400 mb-3">Stage - CHU de Fès</p>
+              <p class="text-gray-400 text-sm mb-4">
+                Création et développement d'une plateforme de gestion de stages pour les étudiants et les administrateurs.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-xs">PHP</span>
+                <span class="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-xs">HTML</span>
+                <span class="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-xs">CSS</span>
+                <span class="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-xs">SQL</span>
+              </div>
+              <ul class="mt-4 text-sm text-gray-400 space-y-2">
+                <li>• Conception d'une plateforme sécurisée</li>
+                <li>• Gestion de base de données</li>
+                <li>• Interface pour étudiants et administrateurs</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-gray-900 rounded-xl overflow-hidden hover:scale-105 transition">
+            <div class="p-6">
+              <h4 class="text-xl font-semibold mb-3">Plateforme de Tri (Sort Number)</h4>
+              <p class="text-sm text-purple-400 mb-3">Projet Personnel</p>
+              <p class="text-gray-400 text-sm mb-4">
+                Création d'une plateforme en ligne dédiée au tri de nombres avec interface utilisateur intuitive.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-purple-600/20 text-purple-400 rounded-full text-xs">HTML</span>
+                <span class="px-3 py-1 bg-purple-600/20 text-purple-400 rounded-full text-xs">CSS</span>
+                <span class="px-3 py-1 bg-purple-600/20 text-purple-400 rounded-full text-xs">JavaScript</span>
+              </div>
+              <ul class="mt-4 text-sm text-gray-400 space-y-2">
+                <li>• Planification et définition des objectifs</li>
+                <li>• Choix des technologies appropriées</li>
+                <li>• Frontend responsive</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-gray-900 rounded-xl overflow-hidden hover:scale-105 transition">
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-3">
+                <h4 class="text-xl font-semibold">Stage - Oumdin</h4>
+                <span class="text-xs text-gray-400">Avril 2022</span>
+              </div>
+              <p class="text-sm text-pink-400 mb-3">Casablanca</p>
+              <p class="text-gray-400 text-sm">
+                Expérience professionnelle en entreprise avec mise en pratique des connaissances en réseau informatique.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-24 bg-gray-900 px-6">
+      <div class="max-w-4xl mx-auto text-center hidden-section">
+        <h3 class="text-3xl font-bold mb-6">Contactez-moi</h3>
+
+        <p class="text-gray-400 mb-8">
+          N'hésitez pas à me contacter pour des projets ou des collaborations.
+        </p>
+
+        <div class="flex flex-col md:flex-row justify-center gap-4 mb-8">
+          <a
+            href="mailto:abdelhamid.alaoui9@gmail.com"
+            class="px-8 py-3 bg-blue-600 rounded-xl hover:bg-blue-500 transition"
+          >
+            📧 Envoyer un email
+          </a>
+          <a
+            href="tel:0631416989"
+            class="px-8 py-3 bg-purple-600 rounded-xl hover:bg-purple-500 transition"
+          >
+            📱 Appeler
+          </a>
+        </div>
+
+        <div class="text-sm text-gray-400">
+          <p>📍 HAY SADRI GR 04 RUE 29 N35 CASABLANCA</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-6 text-center text-gray-500 border-t border-gray-800">
+      © 2026 Abdelhamid ALAOUI — Tous droits réservés
+    </footer>
+
+    <!-- Scroll Animation Script -->
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      });
+
+      document.querySelectorAll(".hidden-section").forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>
